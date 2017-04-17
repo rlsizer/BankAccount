@@ -10,20 +10,14 @@ namespace BankAccount
     {
 
         //fields
-        private double minBalance;
-        private double interest;
+        private double interest = .05;
         private double savingsAccountBal;
         private double transactionAmount;
         private double newDepBal;
         private double newWithBal;
 
+
         //Properties
-        public double MinBalance
-        {
-            get { return this.minBalance; }
-
-        }
-
         public double SavingsAccountBal
         {
             get { return this.savingsAccountBal; }
@@ -48,7 +42,8 @@ namespace BankAccount
         //Methods
         public override double CalcInterest()
         {
-            throw new NotImplementedException();
+            interest = 0.05;
+            return interest;
         }
 
         public double DefaultSavingsBal()
@@ -85,8 +80,19 @@ namespace BankAccount
 
         public override double Withdrawal()
         {
-            newWithBal = savingsAccountBal - transactionAmount;
-            return newWithBal;
+
+            if (newWithBal >= 500)
+            {
+                newWithBal = savingsAccountBal - transactionAmount;
+                return newWithBal;
+            }
+
+            else
+            {
+                Console.WriteLine("\r\nSorry, but that withdrawal amount would put the account below the minimum balance.\r\n");
+                return savingsAccountBal;
+            }
+            
         }
 
         public void ViewWithBal()
