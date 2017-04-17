@@ -21,10 +21,15 @@ namespace BankAccount
 
 
             //Greet the user
-            Console.WriteLine("Hello. Welcome to your Bank Account.\r\n");
+            Console.WriteLine("Hello, Mr. Lannister. Welcome to your Bank Account.\r\n");
 
+            do
+            {
+
+            
             //Store menu options in a string
-            string menu = ("----------------------------------" + Environment.NewLine +
+            string menu = ("BANK OF WESTEROS"+ Environment.NewLine+
+              "----------------------------------" + Environment.NewLine +
               "- [1] View Client Information" + Environment.NewLine+
               "- [2] View Account Balance" + Environment.NewLine+
               "- [3] Deposit Funds"+ Environment.NewLine+
@@ -70,9 +75,24 @@ namespace BankAccount
                 int.TryParse(menuChoice, out menuInt);
             }
 
+            Console.Clear();
+
+            //Use switch case for user menu selections
+            switch (menuInt)
+            {
+
+                //When user selects option one, client information is displayed
+                case 1:
+
+                    client1.DisplayClientInfo();
+                    break;
 
 
-            
+                default:
+                    break;
+            }
+
+            } while (true);
         }
     }
 }
