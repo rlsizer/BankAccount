@@ -25,7 +25,11 @@ namespace BankAccount
 
             //Store menu options in a string
             string menu = ("----------------------------------" + Environment.NewLine +
-              "- [1] View Client Information" + Environment.NewLine);
+              "- [1] View Client Information" + Environment.NewLine+
+              "- [2] View Account Balance" + Environment.NewLine+
+              "- [3] Deposit Funds"+ Environment.NewLine+
+              "- [4] Withdraw Funds"+Environment.NewLine+
+              "- [5] Exit Program" + Environment.NewLine);
 
             //Display menu options
             Console.WriteLine(menu);
