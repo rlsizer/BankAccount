@@ -34,6 +34,20 @@ namespace BankAccount
             //Display menu options
             Console.WriteLine(menu);
 
+            //Store user response in a string variable
+            string menuChoice = Console.ReadLine();
+
+            //Validate if user input anything
+            while (string.IsNullOrWhiteSpace(menuChoice))
+            {
+                //Tell user what went wrong
+                Console.WriteLine("Oops! You didn't select anything.\r\nPlease select a menu option between 1 and 5: ");
+
+                menuChoice = Console.ReadLine();
+            }
+
+
+
             
         }
     }
