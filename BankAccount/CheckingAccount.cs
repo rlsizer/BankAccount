@@ -14,6 +14,7 @@ namespace BankAccount
         private double depositAmount;
         private double withdrawalAmount;
         private double checkingAccountBal;
+        private double newDepBal;
 
 
 
@@ -58,6 +59,7 @@ namespace BankAccount
 
         public override void ViewBalance()
         {
+
             Console.WriteLine();
             Console.WriteLine("Checking Account Balance: \r\n");
             Console.WriteLine("$" +checkingAccountBal+"\r\n\r\n");
@@ -67,9 +69,16 @@ namespace BankAccount
         public override double Deposit()
         {
             
-            checkingAccountBal += depositAmount;
-            return checkingAccountBal;
+            newDepBal = checkingAccountBal + depositAmount;
+            return newDepBal;
             
+        }
+        
+        public void ViewDepBal()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Checking Account Balance: \r\n");
+            Console.WriteLine("$" + newDepBal + "\r\n\r\n");
         }
 
         public override double Withdrawal()
@@ -81,8 +90,8 @@ namespace BankAccount
 
         public void PrintDepBalance()
         {
-            checkingAccountBal += depositAmount;
-            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+checkingAccountBal);
+ 
+            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+newDepBal);
         }
 
     }

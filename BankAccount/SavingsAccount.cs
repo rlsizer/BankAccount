@@ -13,6 +13,8 @@ namespace BankAccount
         private double minBalance;
         private double interest;
         private double savingsAccountBal;
+        private double depositAmount;
+        private double newDepBal;
 
         //Properties
         public double MinBalance
@@ -37,13 +39,18 @@ namespace BankAccount
             this.totalAccountBal = totalAccountBal;
         }
 
+        public SavingsAccount(double depositAmount)
+        {
+            this.depositAmount = depositAmount;
+        }
+
         //Methods
         public override double CalcInterest()
         {
             throw new NotImplementedException();
         }
 
-        public double DefaultSavingsBalance()
+        public double DefaultSavingsBal()
         {
             savingsAccountBal = 700.50;
             return savingsAccountBal;
@@ -55,6 +62,27 @@ namespace BankAccount
             Console.WriteLine("Savings Account Balance:\r\n");
             Console.WriteLine("$" + savingsAccountBal+"\r\n\r\n");
         }
+
+        public override double Deposit()
+        {
+            newDepBal = savingsAccountBal + depositAmount;
+            return newDepBal;
+        }
+
+        public void ViewDepBal()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Savings Account Balance: \r\n");
+            Console.WriteLine("$" + newDepBal + "\r\n\r\n");
+        }
+
+        public void PrintDepBalance()
+        {
+
+            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + newDepBal);
+        }
+
+
 
     }
 }

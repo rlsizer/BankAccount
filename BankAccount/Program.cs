@@ -150,7 +150,7 @@ namespace BankAccount
 
                         if (balanceChoiceInt == 2)
                         {
-                            savings1.DefaultSavingsBalance();
+                            savings1.DefaultSavingsBal();
                             savings1.ViewBalance();
 
                         }
@@ -170,7 +170,7 @@ namespace BankAccount
                         string depositSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
                         "----------------------------------" + Environment.NewLine +
                         "- [1] Deposit Funds into Checking Account" + Environment.NewLine +
-                        "- [2] Depsoit Funds into Savings Account" + Environment.NewLine);
+                        "- [2] Deposit Funds into Savings Account" + Environment.NewLine);
                         Console.WriteLine(depositSubMenu); //Display submenu to console
 
                         string depositChoice = Console.ReadLine();
@@ -232,8 +232,38 @@ namespace BankAccount
 
                             CheckingAccount checking3 = new CheckingAccount(depositAmountDouble);
 
-                            checking2.Deposit();
-                            checking2.PrintDepBalance();
+                            checking3.DefaultCheckingBal();
+                            checking3.Deposit();
+                            checking3.PrintDepBalance();
+                        }
+
+                        if (depositChoiceInt == 2)
+                        {
+
+                            Console.WriteLine("Please enter the amount of money you wish to deposit into your savings account:\r\n");
+                            string depositAmount = Console.ReadLine();
+
+                            //Validate if user input anything
+                            while (string.IsNullOrWhiteSpace(depositChoice))
+                            {
+                                Console.Clear();
+                                //Tell user what went wrong
+                                Console.WriteLine("Oops! You didn't deposit anything.\r\nPlease enter the amount you wish to deposit: ");
+
+                                depositAmount = Console.ReadLine();
+                            }
+
+                            //Declare variable to hold the converted value of deposit amount
+                            double depositAmountDouble;
+
+                            //Convert with TryParse
+                            double.TryParse(depositAmount, out depositAmountDouble);
+
+                            SavingsAccount savings3 = new SavingsAccount(depositAmountDouble);
+
+                            savings3.DefaultSavingsBal();
+                            savings3.Deposit();
+                            savings3.PrintDepBalance();
                         }
 
                         break;
