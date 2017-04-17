@@ -332,7 +332,7 @@ namespace BankAccount
                             double.TryParse(withdrawAmount, out withdrawAmountDouble);
 
                             //Instantiate a new object of CheckingAccount class
-                            CheckingAccount checking3 = new CheckingAccount(1);
+                            CheckingAccount checking3 = new CheckingAccount(withdrawAmountDouble);
 
                             checking3.DefaultCheckingBal();
                             checking3.Withdrawal();
@@ -370,6 +370,11 @@ namespace BankAccount
 
                         break;
 
+                    case 5:
+
+                        Console.Clear();
+                        Console.WriteLine("Thank you for banking with us!\r\n\r\n");
+                        return;
 
 
                     default:
