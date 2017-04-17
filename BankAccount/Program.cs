@@ -156,6 +156,50 @@ namespace BankAccount
 
                         break;
 
+                    case 3:
+
+                        string depositSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
+                        "----------------------------------" + Environment.NewLine +
+                        "- [1] Deposit Funds into Checking Account" + Environment.NewLine +
+                        "- [2] Depsoit Funds into Savings Account" + Environment.NewLine);
+                        Console.WriteLine(depositSubMenu);
+
+                        string depositChoice = Console.ReadLine();
+
+                        //Validate if user input anything
+                        while (string.IsNullOrWhiteSpace(depositChoice))
+                        {
+                            Console.Clear();
+                            //Tell user what went wrong
+                            Console.WriteLine("Oops! You didn't select anything.\r\nPlease select a menu option of 1 or 2: ");
+
+                            Console.WriteLine(depositChoice);
+
+                            depositChoice = Console.ReadLine();
+                        }
+
+                        //Declare variable to hold the converted value of menu selection
+                        int depositChoiceInt;
+
+                        //Convert with TryParse
+                        int.TryParse(depositChoice, out depositChoiceInt);
+
+
+                        //Validate that user made a numerical choice between 1 and 5 
+                        while (depositChoiceInt < 1 || depositChoiceInt > 2)
+                        {
+                            Console.Clear();
+                            //Tell user what went wrong
+                            Console.WriteLine("Oops! You selected something other than a number of 1 or 2.\r\nPlease try again and make a menu selection of 1 or 2.\r\n");
+                            Console.WriteLine(depositSubMenu);
+                            //Re-capture user response
+                            depositChoice = Console.ReadLine();
+
+                            //re-convert to an integer
+                            int.TryParse(depositChoice, out depositChoiceInt);
+                        }
+
+                        break;
 
 
 
