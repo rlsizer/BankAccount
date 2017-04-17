@@ -40,8 +40,11 @@ namespace BankAccount
             //Validate if user input anything
             while (string.IsNullOrWhiteSpace(menuChoice))
             {
+                Console.Clear();
                 //Tell user what went wrong
                 Console.WriteLine("Oops! You didn't select anything.\r\nPlease select a menu option between 1 and 5: ");
+
+                Console.WriteLine(menu);
 
                 menuChoice = Console.ReadLine();
             }
@@ -49,25 +52,17 @@ namespace BankAccount
             //Declare variable to hold the converted value of menu selection
             int menuInt;
 
-            //Convert with TryParse and validate that user input a selection between 1 and 5
-            while (!(int.TryParse(menuChoice, out menuInt)))
-            {
-                //Tell user what went wrong
-                Console.WriteLine("Oops! You selected something other than a number between 1 and 5.\r\nPlease try again and make a menu selection between 1 and 5.");
-
-                //Re-capture user response
-                menuChoice = Console.ReadLine();
-
-                //Re-convert to an integer
-                int.TryParse(menuChoice, out menuInt);
-            }
+            //Convert with TryParse
+            int.TryParse(menuChoice, out menuInt);
+            
 
             //Validate that user made a numerical choice between 1 and 5 
             while (menuInt < 1 || menuInt > 5)
             {
+                Console.Clear();
                 //Tell user what went wrong
                 Console.WriteLine("Oops! You selected something other than a number between 1 and 5.\r\nPlease try again and make a menu selection between 1 and 5.");
-
+                Console.WriteLine(menu);
                 //Re-capture user response
                 menuChoice = Console.ReadLine();
 
