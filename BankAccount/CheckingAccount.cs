@@ -12,8 +12,17 @@ namespace BankAccount
         //fields
         private double interest;
         private double depositAmount;
+        private double withdrawalAmount;
+        private double checkingAccountBal;
+
+
 
         //Properties
+        public double CheckingAccountBal
+        {
+            get { return this.checkingAccountBal; }
+
+        }
 
 
         //Constructors
@@ -36,10 +45,18 @@ namespace BankAccount
             Console.WriteLine("Your current interest is " + interest);
         }
 
-        public override double ViewBalance()
+        public double CalcBalance()
         {
-            Console.WriteLine("$" +accountBalance);
-            return accountBalance;
+            checkingAccountBal = accountBalance / 4;
+            return checkingAccountBal;
+        }
+
+        public override void ViewBalance()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Checking Account Balance: \r\n");
+            Console.WriteLine("$" +checkingAccountBal+"\r\n\r\n");
+  
         }
 
         public override double Deposit()
@@ -51,7 +68,9 @@ namespace BankAccount
 
         public override double Withdrawal()
         {
-            return base.Withdrawal();
+            withdrawalAmount = Convert.ToDouble(Console.ReadLine());
+            accountBalance -= withdrawalAmount;
+            return withdrawalAmount;
         }
 
         public override double PrintNewBalance()

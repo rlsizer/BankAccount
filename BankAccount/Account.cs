@@ -46,9 +46,9 @@ namespace BankAccount
         }
 
         //Methods
-        public virtual double ViewBalance()
+        public virtual void ViewBalance()
         {
-            return accountBalance;
+            Console.WriteLine(accountBalance);
         }
 
         public virtual double Deposit()
