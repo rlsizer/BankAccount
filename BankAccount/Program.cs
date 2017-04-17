@@ -16,6 +16,8 @@ namespace BankAccount
 
 
             Client client1 = new Client();
+            
+
 
             //client1.DisplayClientInfo();
 
@@ -81,14 +83,76 @@ namespace BankAccount
             switch (menuInt)
             {
 
+                
                 //When user selects option one, client information is displayed
                 case 1:
 
                     client1.DisplayClientInfo();
                     break;
 
+                //When user selects option two, display submenu so they can select checkings or savings
+                case 2:
 
-                default:
+                    //Instantiate a new object of CheckingAccount class
+                    CheckingAccount checking1 = new CheckingAccount("12345",22347961.77,"Lord Tyrion's Checking Account");
+
+                        //Instantiate a new object of SavingsAccount class
+                        SavingsAccount savings1 = new SavingsAccount();
+
+                    string balanceSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
+                    "----------------------------------" + Environment.NewLine +
+                    "- [1] View Checking Account Balance" + Environment.NewLine +
+                    "- [2] View Savings Account Balance" + Environment.NewLine);
+                        Console.WriteLine(balanceSubMenu);
+
+                        string balanceChoice = Console.ReadLine();
+
+                        //Validate if user input anything
+                        while (string.IsNullOrWhiteSpace(balanceChoice))
+                        {
+                            Console.Clear();
+                            //Tell user what went wrong
+                            Console.WriteLine("Oops! You didn't select anything.\r\nPlease select a menu option of 1 or 2: ");
+
+                            Console.WriteLine(balanceSubMenu);
+
+                            balanceChoice = Console.ReadLine();
+                        }
+
+                        //Declare variable to hold the converted value of menu selection
+                        int balanceChoiceInt;
+
+                        //Convert with TryParse
+                        int.TryParse(balanceChoice, out balanceChoiceInt);
+
+
+                        //Validate that user made a numerical choice between 1 and 5 
+                        while (balanceChoiceInt < 1 || balanceChoiceInt > 2)
+                        {
+                            Console.Clear();
+                            //Tell user what went wrong
+                            Console.WriteLine("Oops! You selected something other than a number of 1 or 2.\r\nPlease try again and make a menu selection of 1 or 2.\r\n");
+                            Console.WriteLine(balanceSubMenu);
+                            //Re-capture user response
+                            balanceChoice = Console.ReadLine();
+
+                            //re-convert to an integer
+                            int.TryParse(balanceChoice, out balanceChoiceInt);
+                        }
+
+                        
+                        if (balanceChoiceInt == 1)
+                        {
+                            checking1.ViewBalance();
+                        }
+
+
+                        break;
+
+
+
+
+                    default:
                     break;
             }
 

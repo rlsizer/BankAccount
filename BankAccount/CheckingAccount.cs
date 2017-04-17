@@ -38,7 +38,8 @@ namespace BankAccount
 
         public override double ViewBalance()
         {
-            return base.ViewBalance();
+            Console.WriteLine("$" +accountBalance);
+            return accountBalance;
         }
 
         public override double Deposit()
