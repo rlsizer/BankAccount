@@ -99,11 +99,12 @@ namespace BankAccount
                         //Instantiate a new object of SavingsAccount class
                         SavingsAccount savings1 = new SavingsAccount("12345", 120000000.50, "Lord Tyrion's Savings Account");
 
+                        //Store submenu in a string
                         string balanceSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
                         "----------------------------------" + Environment.NewLine +
                         "- [1] View Checking Account Balance" + Environment.NewLine +
                         "- [2] View Savings Account Balance" + Environment.NewLine);
-                        Console.WriteLine(balanceSubMenu);
+                        Console.WriteLine(balanceSubMenu); //Display submenu to console
 
                         string balanceChoice = Console.ReadLine();
 
@@ -156,13 +157,21 @@ namespace BankAccount
 
                         break;
 
+                    //When user selects option three, display submenu so they can select checkings or savings
                     case 3:
 
+                        //Instantiate a new object of CheckingAccount class
+                        CheckingAccount checking2 = new CheckingAccount("12345", 120000000.50, "Lord Tyrion's Checking Account");
+
+                        //Instantiate a new object of SavingsAccount class
+                        SavingsAccount savings2 = new SavingsAccount("12345", 120000000.50, "Lord Tyrion's Savings Account");
+
+                        //Store submenu in a string
                         string depositSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
                         "----------------------------------" + Environment.NewLine +
                         "- [1] Deposit Funds into Checking Account" + Environment.NewLine +
                         "- [2] Depsoit Funds into Savings Account" + Environment.NewLine);
-                        Console.WriteLine(depositSubMenu);
+                        Console.WriteLine(depositSubMenu); //Display submenu to console
 
                         string depositChoice = Console.ReadLine();
 
@@ -197,6 +206,33 @@ namespace BankAccount
 
                             //re-convert to an integer
                             int.TryParse(depositChoice, out depositChoiceInt);
+                        }
+
+                        if (depositChoiceInt == 1)
+                        {
+                            
+                            Console.WriteLine("Please enter the amount of money you wish to deposit into your checking account:\r\n");
+                            string depositAmount = Console.ReadLine();
+
+                            //Validate if user input anything
+                            while (string.IsNullOrWhiteSpace(depositChoice))
+                            {
+                                Console.Clear();
+                                //Tell user what went wrong
+                                Console.WriteLine("Oops! You didn't deposit anything.\r\nPlease enter the amount you wish to deposit: ");
+
+                                depositAmount = Console.ReadLine();
+                            }
+
+                            //Declare variable to hold the converted value of deposit amount
+                            double depositAmountDouble;
+
+                            //Convert with TryParse
+                            double.TryParse(depositAmount, out depositAmountDouble);
+
+                            CheckingAccount checking3 = new CheckingAccount(depositAmountDouble);
+
+                            checking2.Deposit();
                         }
 
                         break;

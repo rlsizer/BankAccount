@@ -33,6 +33,11 @@ namespace BankAccount
             this.accountName = accountName;
         }
 
+        public CheckingAccount(double depositAmount)
+        {
+            this.depositAmount = depositAmount;
+        }
+
         //Methods
         public override double CalcInterest()
         {
@@ -61,9 +66,11 @@ namespace BankAccount
 
         public override double Deposit()
         {
-            depositAmount = Convert.ToDouble(Console.ReadLine());
+            
             accountBalance += depositAmount;
-            return depositAmount;
+            Console.WriteLine(accountBalance);
+            return accountBalance;
+            
         }
 
         public override double Withdrawal()
