@@ -11,10 +11,10 @@ namespace BankAccount
 
         //fields
         private double interest;
-        private double depositAmount;
-        private double withdrawalAmount;
+        private double transactionAmount;
         private double checkingAccountBal;
         private double newDepBal;
+        private double newWithBal;
 
 
 
@@ -34,10 +34,11 @@ namespace BankAccount
             this.totalAccountBal = totalAccountBal;
         }
 
-        public CheckingAccount(double depositAmount)
+        public CheckingAccount(double transactionAmount)
         {
-            this.depositAmount = depositAmount;
+            this.transactionAmount = transactionAmount;
         }
+
 
         //Methods
         public override double CalcInterest()
@@ -69,7 +70,7 @@ namespace BankAccount
         public override double Deposit()
         {
             
-            newDepBal = checkingAccountBal + depositAmount;
+            newDepBal = checkingAccountBal + transactionAmount;
             return newDepBal;
             
         }
@@ -83,15 +84,26 @@ namespace BankAccount
 
         public override double Withdrawal()
         {
-            withdrawalAmount = Convert.ToDouble(Console.ReadLine());
-            checkingAccountBal -= withdrawalAmount;
-            return withdrawalAmount;
+            newWithBal = checkingAccountBal - transactionAmount;
+            return newWithBal;
+        }
+
+        public void ViewWithBal()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Checking Account Balance: \r\n");
+            Console.WriteLine("$" + newWithBal + "\r\n\r\n");
         }
 
         public void PrintDepBalance()
         {
  
             Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+newDepBal);
+        }
+
+        public void PrintWithBalance()
+        {
+            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + newWithBal);
         }
 
     }

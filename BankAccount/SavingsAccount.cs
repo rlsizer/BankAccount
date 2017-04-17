@@ -13,8 +13,9 @@ namespace BankAccount
         private double minBalance;
         private double interest;
         private double savingsAccountBal;
-        private double depositAmount;
+        private double transactionAmount;
         private double newDepBal;
+        private double newWithBal;
 
         //Properties
         public double MinBalance
@@ -39,9 +40,9 @@ namespace BankAccount
             this.totalAccountBal = totalAccountBal;
         }
 
-        public SavingsAccount(double depositAmount)
+        public SavingsAccount(double transactionAmount)
         {
-            this.depositAmount = depositAmount;
+            this.transactionAmount = transactionAmount;
         }
 
         //Methods
@@ -65,7 +66,7 @@ namespace BankAccount
 
         public override double Deposit()
         {
-            newDepBal = savingsAccountBal + depositAmount;
+            newDepBal = savingsAccountBal + transactionAmount;
             return newDepBal;
         }
 
@@ -80,6 +81,24 @@ namespace BankAccount
         {
 
             Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + newDepBal);
+        }
+
+        public override double Withdrawal()
+        {
+            newWithBal = savingsAccountBal - transactionAmount;
+            return newWithBal;
+        }
+
+        public void ViewWithBal()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Savings Account Balance: \r\n");
+            Console.WriteLine("$" + newWithBal + "\r\n\r\n");
+        }
+
+        public void PrintWithBalance()
+        {
+            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + newWithBal);
         }
 
 

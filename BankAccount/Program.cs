@@ -17,7 +17,12 @@ namespace BankAccount
 
             Client client1 = new Client();
 
+            //Instantiate a new object of CheckingAccount class
+                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",1000.50);
 
+
+                        //Instantiate a new object of SavingsAccount class
+                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 1000.50);
 
             //client1.DisplayClientInfo();
 
@@ -93,11 +98,7 @@ namespace BankAccount
                     //When user selects option two, display submenu so they can select checkings or savings
                     case 2:
 
-                        //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",1000.50);
-
-                        //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 1000.50);
+                        
 
                         //Store submenu in a string
                         string balanceSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
@@ -160,11 +161,6 @@ namespace BankAccount
                     //When user selects option three, display submenu so they can select checkings or savings
                     case 3:
 
-                        //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking2 = new CheckingAccount("12345", "Lord Tyrion's Checking Account", 1000.50);
-
-                        //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings2 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 1000.50);
 
                         //Store submenu in a string
                         string depositSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
@@ -230,11 +226,12 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(depositAmount, out depositAmountDouble);
 
-                            CheckingAccount checking3 = new CheckingAccount(depositAmountDouble);
+                            //Instantiate a new object of CheckingAccount class
+                            CheckingAccount checking2 = new CheckingAccount(depositAmountDouble);
 
-                            checking3.DefaultCheckingBal();
-                            checking3.Deposit();
-                            checking3.PrintDepBalance();
+                            checking2.DefaultCheckingBal();
+                            checking2.Deposit();
+                            checking2.PrintDepBalance();
                         }
 
                         if (depositChoiceInt == 2)
@@ -259,11 +256,116 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(depositAmount, out depositAmountDouble);
 
-                            SavingsAccount savings3 = new SavingsAccount(depositAmountDouble);
+                            SavingsAccount savings2 = new SavingsAccount(depositAmountDouble);
+
+                            savings2.DefaultSavingsBal();
+                            savings2.Deposit();
+                            savings2.PrintDepBalance();
+                        }
+
+                        break;
+
+                    case 4:
+
+                        //Store submenu in a string
+                        string withdrawSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
+                        "----------------------------------" + Environment.NewLine +
+                        "- [1] Withdraw Funds from Checking Account" + Environment.NewLine +
+                        "- [2] Withdraw Funds from Savings Account" + Environment.NewLine);
+                        Console.WriteLine(withdrawSubMenu); //Display submenu to console
+
+                        string withdrawChoice = Console.ReadLine();
+
+                        //Validate if user input anything
+                        while (string.IsNullOrWhiteSpace(withdrawChoice))
+                        {
+                            Console.Clear();
+                            //Tell user what went wrong
+                            Console.WriteLine("Oops! You didn't select anything.\r\nPlease select a menu option of 1 or 2: ");
+
+                            Console.WriteLine(withdrawChoice);
+
+                            depositChoice = Console.ReadLine();
+                        }
+
+                        //Declare variable to hold the converted value of menu selection
+                        int withdrawChoiceInt;
+
+                        //Convert with TryParse
+                        int.TryParse(withdrawChoice, out withdrawChoiceInt);
+
+
+                        //Validate that user made a numerical choice between 1 and 5 
+                        while (withdrawChoiceInt < 1 || withdrawChoiceInt > 2)
+                        {
+                            Console.Clear();
+                            //Tell user what went wrong
+                            Console.WriteLine("Oops! You selected something other than a number of 1 or 2.\r\nPlease try again and make a menu selection of 1 or 2.\r\n");
+                            Console.WriteLine(withdrawSubMenu);
+                            //Re-capture user response
+                            withdrawChoice = Console.ReadLine();
+
+                            //re-convert to an integer
+                            int.TryParse(withdrawChoice, out withdrawChoiceInt);
+                        }
+
+                        if (withdrawChoiceInt == 1)
+                        {
+
+                            Console.WriteLine("Please enter the amount of money you wish to withdraw from your checking account:\r\n");
+                            string withdrawAmount = Console.ReadLine();
+
+                            //Validate if user input anything
+                            while (string.IsNullOrWhiteSpace(withdrawAmount))
+                            {
+                                Console.Clear();
+                                //Tell user what went wrong
+                                Console.WriteLine("Oops! You didn't withdraw anything.\r\nPlease enter the amount you wish to withdraw: ");
+
+                                withdrawAmount = Console.ReadLine();
+                            }
+
+                            //Declare variable to hold the converted value of deposit amount
+                            double withdrawAmountDouble;
+
+                            //Convert with TryParse
+                            double.TryParse(withdrawAmount, out withdrawAmountDouble);
+
+                            //Instantiate a new object of CheckingAccount class
+                            CheckingAccount checking3 = new CheckingAccount(1);
+
+                            checking3.DefaultCheckingBal();
+                            checking3.Withdrawal();
+                            checking3.PrintWithBalance();
+                        }
+
+                        if (withdrawChoiceInt == 2)
+                        {
+
+                            Console.WriteLine("Please enter the amount of money you wish to withdraw from your savings account:\r\n");
+                            string withdrawAmount = Console.ReadLine();
+
+                            //Validate if user input anything
+                            while (string.IsNullOrWhiteSpace(withdrawAmount))
+                            {
+                                Console.Clear();
+                                //Tell user what went wrong
+                                Console.WriteLine("Oops! You didn't withdraw anything.\r\nPlease enter the amount you wish to withdraw: ");
+
+                                withdrawAmount = Console.ReadLine();
+                            }
+
+                            //Declare variable to hold the converted value of deposit amount
+                            double withdrawAmountDouble;
+
+                            //Convert with TryParse
+                            double.TryParse(withdrawAmount, out withdrawAmountDouble);
+
+                            SavingsAccount savings3 = new SavingsAccount(withdrawAmountDouble);
 
                             savings3.DefaultSavingsBal();
-                            savings3.Deposit();
-                            savings3.PrintDepBalance();
+                            savings3.Withdrawal();
+                            savings3.PrintWithBalance();
                         }
 
                         break;
