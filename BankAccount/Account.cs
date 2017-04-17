@@ -10,8 +10,8 @@ namespace BankAccount
     {
         //fields
         protected string accountNumber;
-        protected double accountBalance;
         protected string accountName;
+        protected double totalAccountBal;
 
         //Properties
         public string AccountNumber
@@ -20,16 +20,16 @@ namespace BankAccount
 
         }
 
-        public double AccountBalance
-        {
-            get { return this.accountBalance; }
-
-        }
 
         public string AccountName
         {
             get { return this.accountName; }
             set { this.accountName = value; }
+        }
+
+        public double TotalAccountBal
+        {
+            get { return this.totalAccountBal; }
         }
 
         //Constructors
@@ -38,33 +38,31 @@ namespace BankAccount
 
         }
 
-        public Account(string accountNumber, double accountBalance, string accountName)
+        public Account(string accountNumber, string accountName, double totalAccountBal)
         {
             this.accountNumber = accountNumber;
-            this.accountBalance = accountBalance;
             this.accountName = accountName;
+            this.totalAccountBal = totalAccountBal;
         }
 
         //Methods
         public virtual void ViewBalance()
         {
-            Console.WriteLine(accountBalance);
+            Console.WriteLine("\r\nThe grand total balance of all accounts is: \r\n\r\n");
+            Console.WriteLine("$" + totalAccountBal);
         }
 
         public virtual double Deposit()
         {
-            return accountBalance;
+            return totalAccountBal;
         }
 
         public virtual double Withdrawal()
         {
-            return accountBalance;
+            return totalAccountBal;
         }
 
-        public virtual double PrintNewBalance()
-        {
-            return accountBalance;
-        }
+        
         
         public abstract double CalcInterest();
 

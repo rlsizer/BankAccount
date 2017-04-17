@@ -30,11 +30,11 @@ namespace BankAccount
 
 
         //Constructors
-        public SavingsAccount(string accountNumber, double accountBalance, string accountName)
+        public SavingsAccount(string accountNumber, string accountName, double totalAccountBal)
         {
             this.accountNumber = accountNumber;
-            this.accountBalance = accountBalance;
             this.accountName = accountName;
+            this.totalAccountBal = totalAccountBal;
         }
 
         //Methods
@@ -43,9 +43,9 @@ namespace BankAccount
             throw new NotImplementedException();
         }
 
-        public double CalcBalance()
+        public double DefaultSavingsBalance()
         {
-            savingsAccountBal = accountBalance * .75;
+            savingsAccountBal = 700.50;
             return savingsAccountBal;
         }
 

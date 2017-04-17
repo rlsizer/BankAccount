@@ -26,11 +26,11 @@ namespace BankAccount
 
 
         //Constructors
-        public CheckingAccount(string accountNumber, double accountBalance, string accountName)
+        public CheckingAccount(string accountNumber, string accountName, double totalAccountBal)
         {
             this.accountNumber = accountNumber;
-            this.accountBalance = accountBalance;
             this.accountName = accountName;
+            this.totalAccountBal = totalAccountBal;
         }
 
         public CheckingAccount(double depositAmount)
@@ -50,9 +50,9 @@ namespace BankAccount
             Console.WriteLine("Your current interest is " + interest);
         }
 
-        public double CalcBalance()
+        public double DefaultCheckingBal()
         {
-            checkingAccountBal = accountBalance / 4;
+            checkingAccountBal = 300;
             return checkingAccountBal;
         }
 
@@ -67,22 +67,22 @@ namespace BankAccount
         public override double Deposit()
         {
             
-            accountBalance += depositAmount;
-            Console.WriteLine(accountBalance);
-            return accountBalance;
+            checkingAccountBal += depositAmount;
+            return checkingAccountBal;
             
         }
 
         public override double Withdrawal()
         {
             withdrawalAmount = Convert.ToDouble(Console.ReadLine());
-            accountBalance -= withdrawalAmount;
+            checkingAccountBal -= withdrawalAmount;
             return withdrawalAmount;
         }
 
-        public override double PrintNewBalance()
+        public void PrintDepBalance()
         {
-            return base.PrintNewBalance();
+            checkingAccountBal += depositAmount;
+            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+checkingAccountBal);
         }
 
     }

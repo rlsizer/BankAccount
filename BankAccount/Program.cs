@@ -94,10 +94,10 @@ namespace BankAccount
                     case 2:
 
                         //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking1 = new CheckingAccount("12345", 120000000.50, "Lord Tyrion's Checking Account");
+                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",1000.50);
 
                         //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings1 = new SavingsAccount("12345", 120000000.50, "Lord Tyrion's Savings Account");
+                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 1000.50);
 
                         //Store submenu in a string
                         string balanceSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
@@ -144,13 +144,13 @@ namespace BankAccount
 
                         if (balanceChoiceInt == 1)
                         {
-                            checking1.CalcBalance();
+                            checking1.DefaultCheckingBal();
                             checking1.ViewBalance();
                         }
 
                         if (balanceChoiceInt == 2)
                         {
-                            savings1.CalcBalance();
+                            savings1.DefaultSavingsBalance();
                             savings1.ViewBalance();
 
                         }
@@ -161,10 +161,10 @@ namespace BankAccount
                     case 3:
 
                         //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking2 = new CheckingAccount("12345", 120000000.50, "Lord Tyrion's Checking Account");
+                        CheckingAccount checking2 = new CheckingAccount("12345", "Lord Tyrion's Checking Account", 1000.50);
 
                         //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings2 = new SavingsAccount("12345", 120000000.50, "Lord Tyrion's Savings Account");
+                        SavingsAccount savings2 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 1000.50);
 
                         //Store submenu in a string
                         string depositSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
@@ -233,6 +233,7 @@ namespace BankAccount
                             CheckingAccount checking3 = new CheckingAccount(depositAmountDouble);
 
                             checking2.Deposit();
+                            checking2.PrintDepBalance();
                         }
 
                         break;
