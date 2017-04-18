@@ -18,11 +18,11 @@ namespace BankAccount
             Client client1 = new Client();
 
             //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",1000.50);
+                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",500,1000);
 
 
                         //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 1000.50);
+                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account",500, 1000);
 
             //client1.DisplayClientInfo();
 
@@ -98,7 +98,6 @@ namespace BankAccount
                     //When user selects option two, display submenu so they can select checkings or savings
                     case 2:
 
-                        
 
                         //Store submenu in a string
                         string balanceSubMenu = ("BANK OF WESTEROS" + Environment.NewLine +
@@ -226,11 +225,9 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(depositAmount, out depositAmountDouble);
 
-                            //Instantiate a new object of CheckingAccount class
-                            CheckingAccount checking2 = new CheckingAccount(depositAmountDouble);
 
-                            checking2.Deposit();
-                            checking2.PrintDepBalance();
+                            checking1.Deposit(depositAmountDouble);
+                            checking1.PrintDepBalance();
                         }
 
                         if (depositChoiceInt == 2)
@@ -255,11 +252,8 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(depositAmount, out depositAmountDouble);
 
-                            SavingsAccount savings2 = new SavingsAccount(depositAmountDouble);
-
-                            //savings2.DefaultSavingsBal();
-                            savings2.Deposit();
-                            savings2.PrintDepBalance();
+                            savings1.Deposit(depositAmountDouble);
+                            savings1.PrintDepBalance();
                         }
 
                         break;
@@ -330,12 +324,8 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(withdrawAmount, out withdrawAmountDouble);
 
-                            
 
-                            //Instantiate a new object of CheckingAccount class
-                            CheckingAccount checking3 = new CheckingAccount(withdrawAmountDouble);
-
-                            checking3.Withdrawal();
+                            checking1.Withdrawal(withdrawAmountDouble);
        
                         }
 
@@ -361,9 +351,8 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(withdrawAmount, out withdrawAmountDouble);
 
-                            SavingsAccount savings3 = new SavingsAccount(withdrawAmountDouble);
 
-                            savings3.Withdrawal();
+                            savings1.Withdrawal(withdrawAmountDouble);
 
                             
                         }

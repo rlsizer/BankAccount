@@ -11,7 +11,9 @@ namespace BankAccount
         //fields
         protected string accountNumber;
         protected string accountName;
-        protected double totalAccountBal;
+        protected double checkingAccountBal;
+        protected double savingsAccountBal;
+        
 
         //Properties
         public string AccountNumber
@@ -27,9 +29,16 @@ namespace BankAccount
             set { this.accountName = value; }
         }
 
-        public double TotalAccountBal
+        public double CheckingAccountBal
         {
-            get { return this.totalAccountBal; }
+            get { return this.checkingAccountBal; }
+            set { this.checkingAccountBal = value; }
+        }
+
+        public double SavingsAccountBal
+        {
+            get { return this.savingsAccountBal; }
+            set { this.savingsAccountBal = value; }
         }
 
         //Constructors
@@ -38,28 +47,29 @@ namespace BankAccount
 
         }
 
-        public Account(string accountNumber, string accountName, double totalAccountBal)
+        public Account(string accountNumber, string accountName, double checkingAccountBal, double savingsAccountBal)
         {
             this.accountNumber = accountNumber;
             this.accountName = accountName;
-            this.totalAccountBal = totalAccountBal;
+            this.checkingAccountBal = checkingAccountBal;
+            this.savingsAccountBal = savingsAccountBal;
         }
 
         //Methods
         public virtual void ViewBalance()
         {
             Console.WriteLine("\r\nThe grand total balance of all accounts is: \r\n\r\n");
-            Console.WriteLine("$" + totalAccountBal);
+            Console.WriteLine("$" + (checkingAccountBal + savingsAccountBal));
         }
 
-        public virtual double Deposit()
+        public virtual void Deposit(double x)
         {
-            return totalAccountBal;
+            Console.WriteLine("\r\nThe grand total balance of your accounts is:\r\n\r\n" + (checkingAccountBal + savingsAccountBal));
         }
 
-        public virtual void Withdrawal()
+        public virtual void Withdrawal(double y)
         {
-            Console.WriteLine("\r\nThe grand total balance of your accounts is:\r\n\r\n"+totalAccountBal);
+            Console.WriteLine("\r\nThe grand total balance of your accounts is:\r\n\r\n"+(checkingAccountBal+savingsAccountBal));
         }
 
         

@@ -11,35 +11,24 @@ namespace BankAccount
 
         //fields
         private double interest = .05;
-        private double savingsAccountBal = 750;
-        private double transactionAmount;
         private double newDepBal;
         private double newWithBal;
 
 
         //Properties
-        public double SavingsAccountBal
-        {
-            get { return this.savingsAccountBal; }
 
-            set { this.savingsAccountBal = value; }
-
-        }
 
 
 
         //Constructors
-        public SavingsAccount(string accountNumber, string accountName, double totalAccountBal)
+        public SavingsAccount(string accountNumber, string accountName, double checkingAccountBal, double savingsAccountBal) : base(accountNumber,accountName,checkingAccountBal,savingsAccountBal)
         {
             this.accountNumber = accountNumber;
             this.accountName = accountName;
-            this.totalAccountBal = totalAccountBal;
+            this.checkingAccountBal = checkingAccountBal;
+            this.savingsAccountBal = savingsAccountBal;
         }
 
-        public SavingsAccount(double transactionAmount)
-        {
-            this.transactionAmount = transactionAmount;
-        }
 
         //Methods
         public override double CalcInterest()
@@ -56,10 +45,10 @@ namespace BankAccount
             Console.WriteLine("$" + savingsAccountBal+"\r\n\r\n");
         }
 
-        public override double Deposit()
+        public override void Deposit(double x)
         {
-            newDepBal = savingsAccountBal + transactionAmount;
-            return newDepBal;
+            newDepBal = savingsAccountBal + x;
+            Console.WriteLine("\r\nAfter the deposit, your new account balance is:\r\n\r\n" + "$" + newDepBal);
         }
 
         public void ViewDepBal()
@@ -75,9 +64,9 @@ namespace BankAccount
             Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + newDepBal);
         }
 
-        public override void Withdrawal()
+        public override void Withdrawal(double y)
         {
-            newWithBal = savingsAccountBal - transactionAmount;
+            newWithBal = savingsAccountBal - y;
 
             if (newWithBal >= 500)
             {

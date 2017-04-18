@@ -11,33 +11,25 @@ namespace BankAccount
 
         //fields
         private double interest;
-        private double transactionAmount;
-        private double checkingAccountBal = 500;
         private double newDepBal;
         private double newWithBal;
 
 
 
         //Properties
-        public double CheckingAccountBal
-        {
-            get { return this.checkingAccountBal; }
-
-        }
+    
 
 
         //Constructors
-        public CheckingAccount(string accountNumber, string accountName, double totalAccountBal)
+        public CheckingAccount(string accountNumber, string accountName, double checkingAccountBal, double savingsAccountBal) : base(accountNumber, accountName, checkingAccountBal, savingsAccountBal)
         {
             this.accountNumber = accountNumber;
             this.accountName = accountName;
-            this.totalAccountBal = totalAccountBal;
+            this.checkingAccountBal = checkingAccountBal;
+            this.savingsAccountBal = savingsAccountBal;
         }
 
-        public CheckingAccount(double transactionAmount)
-        {
-            this.transactionAmount = transactionAmount;
-        }
+        
 
 
         //Methods
@@ -63,11 +55,11 @@ namespace BankAccount
   
         }
 
-        public override double Deposit()
+        public override void Deposit(double x)
         {
             
-            newDepBal = checkingAccountBal + transactionAmount;
-            return newDepBal;
+            newDepBal = checkingAccountBal + x;
+            Console.WriteLine("\r\nAfter the deposit, your new account balance is:\r\n\r\n" + "$" + newDepBal);
             
         }
         
@@ -78,9 +70,9 @@ namespace BankAccount
             Console.WriteLine("$" + newDepBal + "\r\n\r\n");
         }
 
-        public override void Withdrawal()
+        public override void Withdrawal(double y)
         {
-            newWithBal = checkingAccountBal - transactionAmount;
+            newWithBal = checkingAccountBal - y;
 
             if (newWithBal >= 0)
             {
