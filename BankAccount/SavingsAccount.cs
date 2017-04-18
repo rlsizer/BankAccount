@@ -11,8 +11,6 @@ namespace BankAccount
 
         //fields
         private double interest = .05;
-        private double newDepBal;
-        private double newWithBal;
 
 
         //Properties
@@ -47,30 +45,30 @@ namespace BankAccount
 
         public override void Deposit(double x)
         {
-            newDepBal = savingsAccountBal + x;
-            Console.WriteLine("\r\nAfter the deposit, your new account balance is:\r\n\r\n" + "$" + newDepBal);
+            savingsAccountBal += x;
+            Console.WriteLine("\r\nAfter the deposit, your new account balance is:\r\n\r\n" + "$" + savingsAccountBal);
         }
 
         public void ViewDepBal()
         {
             Console.WriteLine();
             Console.WriteLine("Savings Account Balance: \r\n");
-            Console.WriteLine("$" + newDepBal + "\r\n\r\n");
+            Console.WriteLine("$" + savingsAccountBal + "\r\n\r\n");
         }
 
         public void PrintDepBalance()
         {
 
-            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + newDepBal);
+            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + savingsAccountBal);
         }
 
         public override void Withdrawal(double y)
         {
-            newWithBal = savingsAccountBal - y;
+            savingsAccountBal -= y;
 
-            if (newWithBal >= 500)
+            if (savingsAccountBal >= 500)
             {
-                Console.WriteLine("Your new savings account balance is: \r\n" + "$" + newWithBal);
+                Console.WriteLine("You are withdrawing: \r\n" + "$" + y);
             }
 
             else
@@ -84,10 +82,16 @@ namespace BankAccount
         {
             Console.WriteLine();
             Console.WriteLine("Savings Account Balance: \r\n");
-            Console.WriteLine("$" + newWithBal + "\r\n\r\n");
+            Console.WriteLine("$" + savingsAccountBal + "\r\n\r\n");
         }
 
-        
+        public void PrintWithdrawBalance()
+        {
+
+            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + savingsAccountBal);
+            Console.WriteLine();
+        }
+
 
 
 

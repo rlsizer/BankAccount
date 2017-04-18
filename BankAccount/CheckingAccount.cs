@@ -11,10 +11,6 @@ namespace BankAccount
 
         //fields
         private double interest;
-        private double newDepBal;
-        private double newWithBal;
-
-
 
         //Properties
     
@@ -58,8 +54,8 @@ namespace BankAccount
         public override void Deposit(double x)
         {
             
-            newDepBal = checkingAccountBal + x;
-            Console.WriteLine("\r\nAfter the deposit, your new account balance is:\r\n\r\n" + "$" + newDepBal);
+            checkingAccountBal += x;
+            Console.WriteLine("\r\nYou are depositing:\r\n\r\n" + "$" + x);
             
         }
         
@@ -67,16 +63,16 @@ namespace BankAccount
         {
             Console.WriteLine();
             Console.WriteLine("Checking Account Balance: \r\n");
-            Console.WriteLine("$" + newDepBal + "\r\n\r\n");
+            Console.WriteLine("$" + checkingAccountBal + "\r\n\r\n");
         }
 
         public override void Withdrawal(double y)
         {
-            newWithBal = checkingAccountBal - y;
+            checkingAccountBal -= y;
 
-            if (newWithBal >= 0)
+            if (checkingAccountBal >= 0)
             {
-                Console.WriteLine("Your new checking account balance is: \r\n" + "$" + newWithBal);
+                Console.WriteLine("You are withdrawing: \r\n" + "$" + y);
             }
 
             else
@@ -89,16 +85,22 @@ namespace BankAccount
         {
             Console.WriteLine();
             Console.WriteLine("Checking Account Balance: \r\n");
-            Console.WriteLine("$" + newWithBal + "\r\n\r\n");
+            Console.WriteLine("$" + checkingAccountBal + "\r\n\r\n");
         }
 
         public void PrintDepBalance()
         {
- 
-            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+newDepBal);
+            
+            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+checkingAccountBal);
         }
 
-        
+        public void PrintWithdrawBalance()
+        {
+
+            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + checkingAccountBal);
+            Console.WriteLine();
+        }
+
 
     }
 }

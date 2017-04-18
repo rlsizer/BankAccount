@@ -18,11 +18,11 @@ namespace BankAccount
             Client client1 = new Client();
 
             //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",500,1000);
+                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",25236755.23,77000500.51);
 
 
                         //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account",500, 1000);
+                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account",25236755.23, 77000500.51);
 
             //client1.DisplayClientInfo();
 
@@ -33,7 +33,7 @@ namespace BankAccount
             do
             {
 
-
+            
                 //Store menu options in a string
                 string menu = ("BANK OF WESTEROS" + Environment.NewLine +
                   "----------------------------------" + Environment.NewLine +
@@ -252,9 +252,14 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(depositAmount, out depositAmountDouble);
 
+
+
                             savings1.Deposit(depositAmountDouble);
                             savings1.PrintDepBalance();
+
                         }
+
+                        
 
                         break;
 
@@ -326,6 +331,7 @@ namespace BankAccount
 
 
                             checking1.Withdrawal(withdrawAmountDouble);
+                            checking1.PrintWithdrawBalance();
        
                         }
 
@@ -353,7 +359,7 @@ namespace BankAccount
 
 
                             savings1.Withdrawal(withdrawAmountDouble);
-
+                            savings1.PrintWithdrawBalance();
                             
                         }
 
