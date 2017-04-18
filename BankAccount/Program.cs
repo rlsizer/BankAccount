@@ -14,15 +14,15 @@ namespace BankAccount
             //Ryan Sizer
             //Week 3 - 04/17/2017
 
-
+            //Instantiate a new object of Client class
             Client client1 = new Client();
 
             //Instantiate a new object of CheckingAccount class
-                        CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account",25236755.23,77000500.51);
+            CheckingAccount checking1 = new CheckingAccount("12345", "Lord Tyrion's Checking Account", 25236755.23, 77000500.51);
 
 
-                        //Instantiate a new object of SavingsAccount class
-                        SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account",25236755.23, 77000500.51);
+            //Instantiate a new object of SavingsAccount class
+            SavingsAccount savings1 = new SavingsAccount("12345", "Lord Tyrion's Savings Account", 25236755.23, 77000500.51);
 
             //client1.DisplayClientInfo();
 
@@ -30,10 +30,11 @@ namespace BankAccount
             //Greet the user
             Console.WriteLine("Hello, Mr. Lannister. Welcome to your Bank Account.\r\n");
 
+            //Use a do-while loop for the menu and to keep program running until user exits
             do
             {
 
-            
+
                 //Store menu options in a string
                 string menu = ("BANK OF WESTEROS" + Environment.NewLine +
                   "----------------------------------" + Environment.NewLine +
@@ -205,7 +206,7 @@ namespace BankAccount
 
                         if (depositChoiceInt == 1)
                         {
-                            
+
                             Console.WriteLine("Please enter the amount of money you wish to deposit into your checking account:\r\n");
                             string depositAmount = Console.ReadLine();
 
@@ -225,7 +226,7 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(depositAmount, out depositAmountDouble);
 
-
+                            //Call methods for transactions
                             checking1.Deposit(depositAmountDouble);
                             checking1.PrintDepBalance();
                         }
@@ -253,13 +254,13 @@ namespace BankAccount
                             double.TryParse(depositAmount, out depositAmountDouble);
 
 
-
+                            //Call methods for transaction
                             savings1.Deposit(depositAmountDouble);
                             savings1.PrintDepBalance();
 
                         }
 
-                        
+
 
                         break;
 
@@ -329,11 +330,11 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(withdrawAmount, out withdrawAmountDouble);
 
-
+                            //Call on methods for transaction
                             checking1.Withdrawal(withdrawAmountDouble);
                             checking1.TransactionFee();
                             checking1.PrintWithdrawBalance();
-       
+
                         }
 
                         if (withdrawChoiceInt == 2)
@@ -358,11 +359,11 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(withdrawAmount, out withdrawAmountDouble);
 
-
+                            //Call methods for the transaction
                             savings1.Withdrawal(withdrawAmountDouble);
                             savings1.TransactionFee();
                             savings1.PrintWithdrawBalance();
-                            
+
                         }
 
                         break;
@@ -370,7 +371,7 @@ namespace BankAccount
                     case 5:
 
                         Console.Clear();
-                        Console.WriteLine("Thank you for banking with us!\r\n\r\n");
+                        Console.WriteLine("Thank you for banking with us! Goodbye!\r\n\r\n"); //Goodbye message for user
                         return;
 
 
