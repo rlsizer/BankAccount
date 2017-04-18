@@ -52,27 +52,25 @@ namespace BankAccount
         public override void ViewBalance()
         {
             Console.WriteLine();
-            Console.WriteLine("Savings Account Balance:\r\n");
-            Console.WriteLine("$" + savingsAccountBal+"\r\n\r\n");
+            Console.WriteLine("Savings Account Balance(without interest): \r\n");
+            Console.WriteLine("$" + savingsAccountBal + "\r\n\r\n");
+            Console.WriteLine("Savings Account Balance(with interest):\r\n");
+            Console.WriteLine("$" + (savingsAccountBal + (savingsAccountBal * interest)) + "\r\n");
         }
 
         public override void Deposit(double x)
         {
             savingsAccountBal += x;
-            Console.WriteLine("\r\nAfter the deposit, your new account balance is:\r\n\r\n" + "$" + savingsAccountBal);
+            Console.WriteLine("\r\nYou are depositing:\r\n\r\n" + "$"+x);
         }
 
-        public void ViewDepBal()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Savings Account Balance: \r\n");
-            Console.WriteLine("$" + savingsAccountBal + "\r\n\r\n");
-        }
+        
 
         public void PrintDepBalance()
         {
 
-            Console.WriteLine("\r\n\r\nYour current balance is: \r\n" + "$" + savingsAccountBal);
+            Console.WriteLine("\r\n\r\nYour current balance (with interest): \r\n" + "$" + (savingsAccountBal +(savingsAccountBal * interest)));
+            Console.WriteLine();
         }
 
         public override void Withdrawal(double y)
@@ -94,17 +92,10 @@ namespace BankAccount
  
         }
 
-        public void ViewWithBal()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Savings Account Balance: \r\n");
-            Console.WriteLine("$" + savingsAccountBal + "\r\n\r\n");
-        }
-
         public void PrintWithdrawBalance()
         {
 
-            Console.WriteLine("\r\n\r\nYour current balance is: \r\n" + "$" + savingsAccountBal);
+            Console.WriteLine("\r\n\r\nYour current balance (with interest): \r\n" + "$" + (savingsAccountBal + (savingsAccountBal * interest)));
             Console.WriteLine();
         }
 
