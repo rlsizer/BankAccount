@@ -10,7 +10,7 @@ namespace BankAccount
     {
 
         //fields
-        private double interest;
+        private double fee;
 
 
         //Properties
@@ -30,19 +30,13 @@ namespace BankAccount
 
 
         //Methods
-        public override double CalcInterest()
+        public override double TransactionFee()
         {
-            interest = 0;
-            return interest;
+            fee = checkingAccountBal - 0.25;
+            return fee;
         }
 
-        public void PrintInterest()
-        {
-            Console.WriteLine("Your current interest is " + interest);
-        }
-
-        
-
+  
         public override void ViewBalance()
         {
 

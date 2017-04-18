@@ -331,6 +331,7 @@ namespace BankAccount
 
 
                             checking1.Withdrawal(withdrawAmountDouble);
+                            checking1.TransactionFee();
                             checking1.PrintWithdrawBalance();
        
                         }
@@ -359,6 +360,7 @@ namespace BankAccount
 
 
                             savings1.Withdrawal(withdrawAmountDouble);
+                            savings1.TransactionFee();
                             savings1.PrintWithdrawBalance();
                             
                         }

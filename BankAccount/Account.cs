@@ -75,7 +75,7 @@ namespace BankAccount
 
         
         
-        public abstract double CalcInterest();
+        public abstract double TransactionFee();
 
 
 

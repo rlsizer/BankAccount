@@ -12,6 +12,7 @@ namespace BankAccount
         //fields
         private double interest = .05;
         private double minBalance = 500;
+        private double fee;
 
         //Properties
 
@@ -35,7 +36,13 @@ namespace BankAccount
 
 
         //Methods
-        public override double CalcInterest()
+        public override double TransactionFee()
+        {
+            fee = savingsAccountBal - 2.50;
+            return fee;
+        }
+
+        public double CalcInterest()
         {
             interest = 0.05;
             return interest;
