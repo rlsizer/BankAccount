@@ -11,7 +11,7 @@ namespace BankAccount
 
         //fields
         private double interest = .05;
-        private double savingsAccountBal;
+        private double savingsAccountBal = 750;
         private double transactionAmount;
         private double newDepBal;
         private double newWithBal;
@@ -21,6 +21,8 @@ namespace BankAccount
         public double SavingsAccountBal
         {
             get { return this.savingsAccountBal; }
+
+            set { this.savingsAccountBal = value; }
 
         }
 
@@ -46,11 +48,6 @@ namespace BankAccount
             return interest;
         }
 
-        public double DefaultSavingsBal()
-        {
-            savingsAccountBal = 700.50;
-            return savingsAccountBal;
-        }
 
         public override void ViewBalance()
         {
@@ -78,21 +75,20 @@ namespace BankAccount
             Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + newDepBal);
         }
 
-        public override double Withdrawal()
+        public override void Withdrawal()
         {
+            newWithBal = savingsAccountBal - transactionAmount;
 
             if (newWithBal >= 500)
             {
-                newWithBal = savingsAccountBal - transactionAmount;
-                return newWithBal;
+                Console.WriteLine("Your new savings account balance is: \r\n" + "$" + newWithBal);
             }
 
             else
             {
-                Console.WriteLine("\r\nSorry, but that withdrawal amount would put the account below the minimum balance.\r\n");
-                return savingsAccountBal;
+                Console.WriteLine("\r\nYou cannot withdraw an amount that will send the savings account below $500.\r\nPlease try again.");
             }
-            
+ 
         }
 
         public void ViewWithBal()
@@ -102,10 +98,7 @@ namespace BankAccount
             Console.WriteLine("$" + newWithBal + "\r\n\r\n");
         }
 
-        public void PrintWithBalance()
-        {
-            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + newWithBal);
-        }
+        
 
 
 

@@ -57,9 +57,9 @@ namespace BankAccount
             return totalAccountBal;
         }
 
-        public virtual double Withdrawal()
+        public virtual void Withdrawal()
         {
-            return totalAccountBal;
+            Console.WriteLine("\r\nThe grand total balance of your accounts is:\r\n\r\n"+totalAccountBal);
         }
 
         

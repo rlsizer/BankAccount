@@ -145,13 +145,13 @@ namespace BankAccount
 
                         if (balanceChoiceInt == 1)
                         {
-                            checking1.DefaultCheckingBal();
+
                             checking1.ViewBalance();
                         }
 
                         if (balanceChoiceInt == 2)
                         {
-                            savings1.DefaultSavingsBal();
+                            //savings1.DefaultSavingsBal();
                             savings1.ViewBalance();
 
                         }
@@ -229,7 +229,6 @@ namespace BankAccount
                             //Instantiate a new object of CheckingAccount class
                             CheckingAccount checking2 = new CheckingAccount(depositAmountDouble);
 
-                            checking2.DefaultCheckingBal();
                             checking2.Deposit();
                             checking2.PrintDepBalance();
                         }
@@ -258,7 +257,7 @@ namespace BankAccount
 
                             SavingsAccount savings2 = new SavingsAccount(depositAmountDouble);
 
-                            savings2.DefaultSavingsBal();
+                            //savings2.DefaultSavingsBal();
                             savings2.Deposit();
                             savings2.PrintDepBalance();
                         }
@@ -331,12 +330,13 @@ namespace BankAccount
                             //Convert with TryParse
                             double.TryParse(withdrawAmount, out withdrawAmountDouble);
 
+                            
+
                             //Instantiate a new object of CheckingAccount class
                             CheckingAccount checking3 = new CheckingAccount(withdrawAmountDouble);
 
-                            checking3.DefaultCheckingBal();
                             checking3.Withdrawal();
-                            checking3.PrintWithBalance();
+       
                         }
 
                         if (withdrawChoiceInt == 2)
@@ -363,9 +363,9 @@ namespace BankAccount
 
                             SavingsAccount savings3 = new SavingsAccount(withdrawAmountDouble);
 
-                            savings3.DefaultSavingsBal();
                             savings3.Withdrawal();
-                            savings3.PrintWithBalance();
+
+                            
                         }
 
                         break;

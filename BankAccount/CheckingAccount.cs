@@ -12,7 +12,7 @@ namespace BankAccount
         //fields
         private double interest;
         private double transactionAmount;
-        private double checkingAccountBal;
+        private double checkingAccountBal = 500;
         private double newDepBal;
         private double newWithBal;
 
@@ -52,11 +52,7 @@ namespace BankAccount
             Console.WriteLine("Your current interest is " + interest);
         }
 
-        public double DefaultCheckingBal()
-        {
-            checkingAccountBal = 300;
-            return checkingAccountBal;
-        }
+        
 
         public override void ViewBalance()
         {
@@ -82,10 +78,19 @@ namespace BankAccount
             Console.WriteLine("$" + newDepBal + "\r\n\r\n");
         }
 
-        public override double Withdrawal()
+        public override void Withdrawal()
         {
             newWithBal = checkingAccountBal - transactionAmount;
-            return newWithBal;
+
+            if (newWithBal >= 0)
+            {
+                Console.WriteLine("Your new checking account balance is: \r\n" + "$" + newWithBal);
+            }
+
+            else
+            {
+                Console.WriteLine("\r\nYou have insufficient funds for this transaction.\r\nPlease try again.");
+            }
         }
 
         public void ViewWithBal()
@@ -101,10 +106,7 @@ namespace BankAccount
             Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+newDepBal);
         }
 
-        public void PrintWithBalance()
-        {
-            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + newWithBal);
-        }
+        
 
     }
 }
