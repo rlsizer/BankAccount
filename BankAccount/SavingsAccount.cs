@@ -11,9 +11,15 @@ namespace BankAccount
 
         //fields
         private double interest = .05;
-
+        private double minBalance = 500;
 
         //Properties
+
+        public double MinBalance
+        {
+            get { return minBalance; }
+            set { minBalance = value; }
+        }
 
 
 
@@ -59,21 +65,24 @@ namespace BankAccount
         public void PrintDepBalance()
         {
 
-            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n" + "$" + savingsAccountBal);
+            Console.WriteLine("\r\n\r\nYour current balance is: \r\n" + "$" + savingsAccountBal);
         }
 
         public override void Withdrawal(double y)
         {
-            savingsAccountBal -= y;
 
-            if (savingsAccountBal >= 500)
+            
+
+            if (savingsAccountBal - y >= minBalance)
             {
+                savingsAccountBal -= y;
                 Console.WriteLine("You are withdrawing: \r\n" + "$" + y);
             }
 
             else
             {
                 Console.WriteLine("\r\nYou cannot withdraw an amount that will send the savings account below $500.\r\nPlease try again.");
+                
             }
  
         }
@@ -88,7 +97,7 @@ namespace BankAccount
         public void PrintWithdrawBalance()
         {
 
-            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + savingsAccountBal);
+            Console.WriteLine("\r\n\r\nYour current balance is: \r\n" + "$" + savingsAccountBal);
             Console.WriteLine();
         }
 

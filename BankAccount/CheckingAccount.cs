@@ -12,6 +12,7 @@ namespace BankAccount
         //fields
         private double interest;
 
+
         //Properties
     
 
@@ -68,10 +69,11 @@ namespace BankAccount
 
         public override void Withdrawal(double y)
         {
-            checkingAccountBal -= y;
+            
 
-            if (checkingAccountBal >= 0)
+            if (checkingAccountBal >= y)
             {
+                checkingAccountBal -= y;
                 Console.WriteLine("You are withdrawing: \r\n" + "$" + y);
             }
 
@@ -91,13 +93,13 @@ namespace BankAccount
         public void PrintDepBalance()
         {
             
-            Console.WriteLine("\r\n\r\nAfter the deposit, your new balance is: \r\n"+"$"+checkingAccountBal);
+            Console.WriteLine("\r\n\r\nYour current balance is: \r\n"+"$"+checkingAccountBal);
         }
 
         public void PrintWithdrawBalance()
         {
 
-            Console.WriteLine("\r\n\r\nAfter the withdrawal, your new balance is: \r\n" + "$" + checkingAccountBal);
+            Console.WriteLine("\r\n\r\nYour current balance is: \r\n" + "$" + checkingAccountBal);
             Console.WriteLine();
         }
 
